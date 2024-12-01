@@ -1,0 +1,57 @@
+/* Общие стили для заголовка */
+.site-header {
+    background-color: #0044cc; /* Синий фон для хедера */
+    color: white; /* Белый текст */
+    padding: 15px 30px; /* Отступы */
+    display: flex; /* Используем flexbox для выравнивания */
+    justify-content: space-between; /* Пространство между логотипом и навигацией */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px; /* Установка высоты для логотипа */
+    margin-right: 15px; /* Отступ между логотипом и текстом */
+}
+
+.site-name {
+    font-size: 24px;
+    font-weight: bold; /* Сделаем название сайта жирным */
+}
+
+.header-nav {
+    display: flex; /* Горизонтальное расположение ссылок */
+    gap: 30px; /* Промежутки между ссылками */
+}
+
+.nav-link {
+    color: white; /* Белый цвет текста для ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 18px; /* Размер шрифта */
+    transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.nav-link:hover {
+    color: #ffcc00; /* Желтый цвет при наведении */
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column; /* В мобильной версии хедер будет в колонку */
+        text-align: center; /* Текст по центру */
+    }
+
+    .header-nav {
+        flex-direction: column; /* Навигация также в колонку */
+        gap: 15px; /* Уменьшаем промежутки между ссылками */
+    }
+
+    .logo {
+        margin-bottom: 10px; /* Отступ снизу для логотипа */
+    }
+}
