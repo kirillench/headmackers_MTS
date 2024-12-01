@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Поиск сотрудника</title>
+{% load static %}
+    <link href="{% static 'css/search.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="search-header">
+            <h1>Поиск сотрудника</h1>
+        </div>
+
+        <!-- Форма поиска -->
+        <form method="GET" action="{% url 'search' %}" class="search-form">
+            <input type="text" name="query" placeholder="Имя, фамилия, должность, email..." value="{{ request.GET.query }}" class="search-input">
+            <button type="submit" class="search-button"><i class="fas fa-search"></i> Поиск</button>
+        </form>
+
+        <!-- Результаты поиска -->
+        {% if employees %}
+            <div class="search-results">
+                {% for employee in employees %}
+                    <div class="employee-card">
+                        <h3>{{ employee.name }} {{ employee.surname }}</h3>
+                        <p><strong>Должность:</strong> {{ employee.position }}</p>
+                        <p><strong>Email:</strong> <a href="mailto:{{ employee.email }}">{{ employee.email }}</a></p>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>По вашему запросу ничего не найдено.</p>
+        {% endif %}
+{% endblock %}

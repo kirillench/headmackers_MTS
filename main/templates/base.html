@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% block title %}
+    <title>Новости компании</title>
+     {% endblock %}
+    <meta charset="UTF-8">
+
+     {% load static %}
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/ocnova.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/drevo.css' %}" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    {% block head %}
+        <header class="site-header">
+            <div class="logo-container">
+                <a href="{% url 'base' %}">
+                    <img src="{% static 'images/MTS.png' %}" alt="Логотип" class="logo">
+                </a>
+                <span class="site-name">Structo</span>
+            </div>
+
+            <nav class="header-nav">
+                <a href="{% url 'base' %}" class="nav-link">Главная</a>
+                <a href="{% url 'drevo' %}" class="nav-link">Структура компании</a>
+                <a href="{% url 'search' %}" class="nav-link">Поиск сотрудника</a>
+            </nav>
+        </header>
+    {% endblock %}
+</head>
+<body>
+    <div class="col-sm-10">
+        {% block content %}
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Добро пожаловать в систему визуализации организационной структуры</h1>
+                <p>Управляйте своей организацией с легкостью. Наша платформа позволяет вам визуализировать структуру вашей компании, отслеживать сотрудников и улучшать взаимодействие внутри команды.</p>
+                <a href="{% url 'drevo' %}" class="btn">Начать</a>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Основные функции</h2>
+            <div class="feature-item">
+                <h3>Интерактивная визуализация</h3>
+                <p>Легко создавайте и редактируйте организационные диаграммы с помощью интуитивно понятного интерфейса.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Управление сотрудниками</h3>
+                <p>Отслеживайте информацию о сотрудниках, их роли и взаимодействия в команде.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Аналитика и отчеты</h3>
+                <p>Получайте подробные отчеты о структуре вашей организации и производительности сотрудников.</p>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2>Отзывы пользователей</h2>
+            <div class="testimonial-item">
+                <p>"Эта платформа значительно упростила управление нашей организацией. Теперь мы можем легко видеть, кто за что отвечает!"</p>
+                <cite>- Анна Петрова, HR-менеджер</cite>
+            </div>
+            <div class="testimonial-item">
+                <p>"Интерфейс очень удобный, и я быстро разобрался, как им пользоваться. Рекомендую всем!"</p>
+                <cite>- Иван Сидоров, Руководитель отдела</cite>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <h2>Готовы начать?</h2>
+            <p>Присоединяйтесь к нам и улучшите управление вашей организацией уже сегодня!</p>
+            <a href="{% url 'drevo' %}" class="btn">Зарегистрироваться</a>
+        </section>
+        {% endblock %}
+    </div>
+
+
+    {% block footer %}
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{% static 'images/MTS.png' %}" alt="Логотип" class="footer-logo-img">
+                <span class="footer-site-name">Structo</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="footer-social-link">Facebook</a>
+                <a href="#" class="footer-social-link">Twitter</a>
+                <a href="#" class="footer-social-link">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Structo. Все права защищены.</p>
+        </div>
+    </footer>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Организационная структура</title>
+{% load static %}
+    <link href="{% static 'css/drevo.css' %}" rel="stylesheet" />{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <canvas id="connections"></canvas>
+
+        <!-- Уровень 1 -->
+        <div class="block">
+            <div class="card highlight" id="level1-1">
+                <h3>Председатель банка</h3>
+                <p>Ответственный за общее управление и стратегию банка.</p>
+                <button onclick="openModal('level1-1')">Подробнее</button>
+            </div>
+        </div>
+
+        <!-- Уровень 2 -->
+        <div class="row">
+            <div class="card" id="level2-1">
+                <h3>Заместитель председателя банка</h3>
+                <p>Розничный блок</p>
+                <button onclick="openModal('level2-1')">Подробнее</button>
+            </div>
+            <div class="card" id="level2-2">
+                <h3>Заместитель председателя банка</h3>
+                <p>Корпоративный блок</p>
+                <button onclick="openModal('level2-2')">Подробнее</button>
+            </div>
+        </div>
+
+        <!-- Уровень 3 -->
+        <div class="row">
+            <div class="card" id="level3-1">
+                <h3>Директор управления</h3>
+                <p>Работа с филиалами</p>
+                <button onclick="openModal('level3-1')">Подробнее</button>
+            </div>
+            <div class="card" id="level3-2">
+                <h3>Владелец продукта</h3>
+                <p>Онлайн-банкинг</p>
+                <button onclick="openModal('level3-2')">Подробнее</button>
+            </div>
+            <div class="card" id="level3-3">
+                <h3>Владелец продукта</h3>
+                <p>Ипотека</p>
+                <button onclick="openModal('level3-3')">Подробнее</button>
+            </div>
+            <div class="card" id="level3-4">
+                <h3>Директор управления</h3>
+                <p>Работа с филиалами</p>
+                <button onclick="openModal('level3-4')">Подробнее</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <ul>
+                <li><strong>ID:</strong> <span id="modal-id"></span></li>
+                <li><strong>Имя:</strong> <span id="modal-name"></span></li>
+                <li><strong>Фамилия:</strong> <span id="modal-surname"></span></li>
+                <li><strong>Должность:</strong> <span id="modal-position"></span></li>
+                <li><strong>Email:</strong> <span id="modal-email"></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Модель данных сотрудников
+        const employees = {
+            "level1-1": {
+                id: "1",
+                name: "Иван",
+                surname: "Иванов",
+                position: "Председатель банка",
+                email: "ivanov@bank.ru",
+                description: "Ответственный за общее управление и стратегию банка."
+            },
+            "level2-1": {
+                id: "2",
+                name: "Петр",
+                surname: "Петров",
+                position: "Заместитель председателя банка (Розничный блок)",
+                email: "petrov@bank.ru",
+                description: "Отвечает за развитие и управление розничным направлением банка."
+            },
+            "level2-2": {
+                id: "3",
+                name: "Алексей",
+                surname: "Алексеев",
+                position: "Заместитель председателя банка (Корпоративный блок)",
+                email: "alekseev@bank.ru",
+                description: "Отвечает за корпоративное направление банка."
+            },
+            "level3-1": {
+                id: "4",
+                name: "Мария",
+                surname: "Маркова",
+                position: "Директор управления (Работа с филиалами)",
+                email: "markova@bank.ru",
+                description: "Руководит взаимодействием с филиалами банка."
+            },
+            "level3-2": {
+                id: "5",
+                name: "Дмитрий",
+                surname: "Дмитриев",
+                position: "Владелец продукта (Онлайн-банкинг)",
+                email: "dmitriev@bank.ru",
+                description: "Ответственен за развитие и управление онлайн-банкингом."
+            },
+            "level3-3": {
+                id: "6",
+                name: "Екатерина",
+                surname: "Екатерова",
+                position: "Владелец продукта (Ипотека)",
+                email: "ekaterova@bank.ru",
+                description: "Отвечает за ипотечные продукты банка."
+            },
+            "level3-4": {
+                id: "7",
+                name: "Сергей",
+                surname: "Сергеев",
+                position: "Директор управления (Работа с филиалами)",
+                email: "sergeev@bank.ru",
+                description: "Руководит взаимодействием с филиалами банка."
+            }
+        };
+
+        // Открытие модального окна и отображение информации
+        function openModal(levelId) {
+            const employee = employees[levelId];
+
+            document.getElementById('modal-title').textContent = employee.position;
+            document.getElementById('modal-description').textContent = employee.description;
+            document.getElementById('modal-id').textContent = employee.id;
+            document.getElementById('modal-name').textContent = employee.name;
+            document.getElementById('modal-surname').textContent = employee.surname;
+            document.getElementById('modal-position').textContent = employee.position;
+            document.getElementById('modal-email').textContent = employee.email;
+
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+{% endblock %}
